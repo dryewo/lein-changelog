@@ -1,4 +1,4 @@
-(defproject lein-changelog "0.2.0"
+(defproject lein-changelog "0.2.1"
   :description "A Leiningen plugin to automate changelog tasks."
   :url "https://github.com/dryewo/lein-changelog"
   :license {:name "Eclipse Public License"
