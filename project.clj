@@ -6,7 +6,7 @@
   :dependencies []
   :plugins [[lein-cloverage "1.0.9"]
             [lein-shell "0.5.0"]
-            ;[lein-changelog "0.0.0"]
+            [lein-changelog "0.2.0"]
             [lein-ancient "0.6.15"]]
   :eval-in-leiningen true
   :profiles {:dev {:dependencies [[org.clojure/clojure "1.9.0"]]}}
@@ -15,7 +15,7 @@
   :release-tasks [["vcs" "assert-committed"]
                   ["change" "version" "leiningen.release/bump-version"]
                   ["change" "version" "leiningen.release/bump-version" "release"]
-                  ;["changelog" "release"]
+                  ["changelog" "release"]
                   ["update-readme-version"]
                   ["vcs" "commit"]
                   ["vcs" "tag"]
