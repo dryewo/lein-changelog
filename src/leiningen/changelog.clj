@@ -76,8 +76,8 @@
   (case subtask
     "release" (let [changelog-str (slurp changelog-filename)
                     today-date    (.format (SimpleDateFormat. "yyyy-MM-dd") (Date.))]
-                (-> (release (:version project) today-date changelog-str)
-                    (spit changelog-filename)))
+                (->> (release (:version project) today-date changelog-str)
+                     (spit changelog-filename)))
     nil :not-implemented-yet
     (leiningen.core.main/warn "Unknown task.")))
 
