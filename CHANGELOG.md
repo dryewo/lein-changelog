@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 
 ## [Unreleased]
+
+## [0.3.1] — 2018-09-03
 ### Changed
 - _CHANGELOG.md_ template: `lein changelog init` now generates _CHANGELOG.md_ with latest released version in place.
 - Use long dash in section titles.
@@ -28,4 +30,5 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 [0.2.2]: https://github.com/dryewo/lein-changelog/compare/0.2.0...0.2.2
 [0.3.0]: https://github.com/dryewo/lein-changelog/compare/0.2.2...0.3.0
-[Unreleased]: https://github.com/dryewo/lein-changelog/compare/0.3.0...HEAD
+[0.3.1]: https://github.com/dryewo/lein-changelog/compare/0.3.0...0.3.1
+[Unreleased]: https://github.com/dryewo/lein-changelog/compare/0.3.1...HEAD
