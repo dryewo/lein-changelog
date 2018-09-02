@@ -8,23 +8,21 @@ Intended to be used as part of [automated release procedure].
 
 ## Usage
 
-Add this into the `:plugins` vector of your _project.clj_:
+First, modify `:plugins` vector of your _project.clj_:
 
-    [lein-changelog "0.3.0"]
-
-If you don't have _CHANGELOG.md_ in your project, you can add a new one:
-
-    $ lein changelog init
-
-Then add this:
-
+```clj
+    :plugins [[lein-changelog "0.3.0"]]
 ```
+
+Then add this to _project.clj_:
+
+```clj
   :release-tasks [... 
                   ["changelog" "release"]
                   ...]
 ```
 
-to your _project.clj_. Read more about [custom release tasks].  
+Read more about [custom release tasks].  
 **IMPORTANT**: the `["changelog" "release"]` has to come after version bumping, because this plugin reads the version from _project.clj_.
 
 For example (read more about this specific procedure [here](https://github.com/dryewo/clojure-library-template)):
@@ -40,9 +38,27 @@ For example (read more about this specific procedure [here](https://github.com/d
                   ["vcs" "push"]]
 ```
 
-Release normally:
+### If you don't have _CHANGELOG.md_
+
+Create _CHANGELOG.md_ file from template:
+
+    $ lein changelog init
+
+Open the file and check the last released version section (it was generated from the latest git tag).
+You might want to correct the title and add some details to it as well.
+
+When you are working on your project, add changes to `## [Unreleased]` section with every commit you make.
+
+### Now you have _CHANGELOG.md_
+
+If you didn't just create it, check that it corresponds to the [format](#changelog-format).
+
+When you are ready to release the next version, just run:
 
     $ lein release :minor
+
+or with `:major` or `:patch`. If you have already configured `:release-tasks` as described above,
+`lein changelog release` will be called automatically and will update _CHANGELOG.md_.
 
 
 ## Explanation
@@ -102,6 +118,8 @@ initial-blah
 [0.2.0]: https://github.com/your-name/lein-changelog/compare/0.1.1...0.2.0
 [Unreleased]: https://github.com/your-name/lein-changelog/compare/0.2.0...HEAD
 ```
+
+### Changelog format
 
 The only required parts here are:
 

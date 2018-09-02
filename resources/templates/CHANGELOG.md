@@ -7,10 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 
 ## [Unreleased]
-
-## 0.0.0 - 2018-18-18
 ### Added
-- Something has been added.
+- _CHANGELOG.md_ created.
 ### Changed
 - Something has been changed.
 ### Fixed
@@ -18,5 +16,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Removed
 - Something has been removed.
 
+## {{last-version}} — {{last-version-date}}
+Released without _CHANGELOG.md_
 
-[Unreleased]: https://github.com/OWNER/REPO/compare/0.0.0...HEAD
+
+[Unreleased]: https://github.com/{{owner+repo}}/compare/{{last-version}}...HEAD

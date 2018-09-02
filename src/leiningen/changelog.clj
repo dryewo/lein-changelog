@@ -43,7 +43,7 @@
 
 (defn render-changelog [changelog-data next-version today-date]
   (let [{:keys [before-unreleased found-unreleased-title after-unreleased unreleased-link last-released-version]} changelog-data
-        next-version-title  (format "## [%s] - %s" next-version today-date)
+        next-version-title  (format "## [%s] — %s" next-version today-date)
         next-version-link   (-> unreleased-link
                                 (str/replace "[Unreleased]" (str "[" next-version "]"))
                                 (str/replace "...HEAD" (str "..." next-version)))
@@ -101,29 +101,52 @@
       (main/info "Git repository not found in the current directory."))))
 
 
-(defn generate-changelog-str [template-str owner+repo]
-  (if-not owner+repo
-    (do
-      (main/info "Using \"OWNER/REPO\" in the generated changelog file. You should replace it later.")
-      template-str)
-    (str/replace template-str "OWNER/REPO" owner+repo)))
+(defn generate-changelog-str [template-str owner+repo last-version last-version-date]
+  (when-not owner+repo
+    (main/info "Using \"OWNER/REPO\" in the generated changelog file. You should replace it later."))
+  (-> template-str
+      (str/replace "{{owner+repo}}" (or owner+repo "OWNER/REPO"))
+      (str/replace "{{last-version}}" last-version)
+      (str/replace "{{last-version-date}}" last-version-date)))
 
 
-(defn init []
+(defn get-today-date []
+  (.format (SimpleDateFormat. "yyyy-MM-dd") (Date.)))
+
+
+(defn get-latest-tag []
+  (let [{:keys [exit out err]} (sh/sh "git" "describe" "--tags" "--abbrev=0")]
+    (if (zero? exit)
+      (str/trim out)
+      (main/info "No tags found in current repo:" err))))
+
+
+(defn get-tag-date [tag]
+  (let [{:keys [exit out err]} (sh/sh "git" "--no-pager" "log" "-1" "--format=%ad" "--date=short" tag)]
+    (if (zero? exit)
+      (str/trim out)
+      (main/info "Cannot get tag date:" err))))
+
+
+(defn init [{:keys [version]}]
   (if-not (prompt-overwrite)
     (main/exit 1)
-    (let [template-str  (slurp (io/resource "templates/CHANGELOG.md"))
-          owner+repo    (get-owner+repo)
-          changelog-str (generate-changelog-str template-str owner+repo)]
+    (let [template-str    (slurp (io/resource "templates/CHANGELOG.md"))
+          latest-tag      (get-latest-tag)
+          latest-tag-date (when latest-tag
+                            (get-tag-date latest-tag))
+          today-date      (get-today-date)
+          owner+repo      (get-owner+repo)
+          changelog-str   (generate-changelog-str template-str owner+repo (or latest-tag version) (or latest-tag-date today-date))]
       (main/info "Wrote" changelog-filename)
       (spit changelog-filename changelog-str))))
 
 
-(defn release [version]
+(defn release [{:keys [version]}]
   (if-not (.exists (io/file changelog-filename))
     (main/warn changelog-filename "not found, use `lein changelog init` to create one.")
     (let [changelog-str (slurp changelog-filename)
-          today-date    (.format (SimpleDateFormat. "yyyy-MM-dd") (Date.))]
+          today-date    (get-today-date)]
       (->> (release-impl version today-date changelog-str)
            (spit changelog-filename)))))
 
@@ -132,8 +155,8 @@
   {:subtasks [#'init #'release]}
   [project & [subtask]]
   (case subtask
-    "init" (init)
-    "release" (release (:version project))
+    "init" (init project)
+    "release" (release project)
     nil :not-implemented-yet
     (leiningen.core.main/warn "Unknown task.")))
 
