@@ -14,7 +14,7 @@ First, modify `:plugins` vector of your _project.clj_:
     :plugins [[lein-changelog "0.3.0"]]
 ```
 
-Then add this to _project.clj_:
+Then add `["changelog" "release"]` to `:release-tasks` in your _project.clj_:
 
 ```clj
   :release-tasks [... 
@@ -22,10 +22,12 @@ Then add this to _project.clj_:
                   ...]
 ```
 
-Read more about [custom release tasks].  
+If you have no `:release-tasks` key in your _project.clj_, please read more about [custom release tasks] and add it.
+Custom `:release-tasks` is necessary to automate changelog work.
+  
 **IMPORTANT**: the `["changelog" "release"]` has to come after version bumping, because this plugin reads the version from _project.clj_.
 
-For example (read more about this specific procedure [here](https://github.com/dryewo/clojure-library-template)):
+Example `:release-tasks` (read more about this specific procedure [here](https://github.com/dryewo/clojure-library-template)):
 
 ```clj
   :release-tasks [["vcs" "assert-committed"]
