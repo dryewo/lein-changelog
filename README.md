@@ -14,7 +14,7 @@ Add this into the `:plugins` vector of your _project.clj_:
 
 If you don't have _CHANGELOG.md_ in your project, you can add a new one:
 
-    lein changelog init
+    $ lein changelog init
 
 Then add this:
 
