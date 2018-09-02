@@ -10,7 +10,7 @@ Intended to be used as part of [automated release procedure].
 
 Add this into the `:plugins` vector of your _project.clj_:
 
-    [lein-changelog "0.2.2"]
+    [lein-changelog "0.3.0"]
 
 If you don't have _CHANGELOG.md_ in your project, you can add a new one:
 

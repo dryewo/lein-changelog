@@ -2,6 +2,8 @@
 All notable changes to this project will be documented in this file. This change log follows the conventions of [keepachangelog.com](http://keepachangelog.com/).
 
 ## [Unreleased]
+
+## [0.3.0] - 2018-09-03
 ### Added
 - New subcommand: `lein changelog init` to create _CHANGELOG.md_ file.
 ### Fixed
@@ -16,4 +18,5 @@ All notable changes to this project will be documented in this file. This change
 - Implemented `release` subtask.
 
 [0.2.2]: https://github.com/dryewo/lein-changelog/compare/0.2.0...0.2.2
-[Unreleased]: https://github.com/dryewo/lein-changelog/compare/0.2.2...HEAD
+[0.3.0]: https://github.com/dryewo/lein-changelog/compare/0.2.2...0.3.0
+[Unreleased]: https://github.com/dryewo/lein-changelog/compare/0.3.0...HEAD
