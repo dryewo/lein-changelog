@@ -40,18 +40,18 @@ For example (read more about this specific procedure [here](https://github.com/d
 
 ### If you don't have _CHANGELOG.md_
 
-Create _CHANGELOG.md_ file from template:
+Run this command to generate a dummy _CHANGELOG.md_ file from template:
 
     $ lein changelog init
 
-Open the file and check the last released version section (it was generated from the latest git tag).
-You might want to correct the title and add some details to it as well.
+Open the freshly generated _CHANGELOG.md_ file and check the last released version section (it was generated from the latest git tag).
+You might want to correct the title and add some details to the section as well.
 
 When you are working on your project, add changes to `## [Unreleased]` section with every commit you make.
 
-### Now you have _CHANGELOG.md_
+### If you have _CHANGELOG.md_
 
-If you didn't just create it, check that it corresponds to the [format](#changelog-format).
+If you didn't use `lein changelog init` to create it, check that it corresponds to the [format](#changelog-format).
 
 When you are ready to release the next version, just run:
 
@@ -68,7 +68,6 @@ When you run
     $ lein changelog release
 
 (or when it's executed as part of `lein release`), this plugin does the following:
-
 
 1. Reads contents of the _CHANGELOG.md_ file.
 2. Replaces `## [Unreleased]` line with `## [X.Y.Z] - 2018-18-18`,  
@@ -94,8 +93,8 @@ old-blah
 ## 0.1.0 - 2018-01-01
 initial-blah
 
-[0.1.1]: https://github.com/your-name/lein-changelog/compare/0.1.0...0.1.1
-[Unreleased]: https://github.com/your-name/lein-changelog/compare/0.1.1...HEAD
+[0.1.1]: https://github.com/your-name/your-repo/compare/0.1.0...0.1.1
+[Unreleased]: https://github.com/your-name/your-repo/compare/0.1.1...HEAD
 ```
 
 Replaces its contents with this:
@@ -114,9 +113,9 @@ old-blah
 ## 0.1.0 - 2018-01-01
 initial-blah
 
-[0.1.1]: https://github.com/your-name/lein-changelog/compare/0.1.0...0.1.1
-[0.2.0]: https://github.com/your-name/lein-changelog/compare/0.1.1...0.2.0
-[Unreleased]: https://github.com/your-name/lein-changelog/compare/0.2.0...HEAD
+[0.1.1]: https://github.com/your-name/your-repo/compare/0.1.0...0.1.1
+[0.2.0]: https://github.com/your-name/your-repo/compare/0.1.1...0.2.0
+[Unreleased]: https://github.com/your-name/your-repo/compare/0.2.0...HEAD
 ```
 
 ### Changelog format
@@ -124,7 +123,7 @@ initial-blah
 The only required parts here are:
 
 1. `## [Unreleased]` line has to match exactly.
-2. There has to be a line that looks like `[Unreleased]: https://github.com/your-name/lein-changelog/compare/0.2.0...HEAD`  
+2. There has to be a line that looks like `[Unreleased]: https://github.com/your-name/your-repo/compare/0.2.0...HEAD`  
    It will be used to generate a diff link to the version currently being released (`X.Y.Z`) as well as to the new `[Unreleased]` diff.
 
 If any of these lines are missing, the plugin will fail and exit with a non-zero code. 

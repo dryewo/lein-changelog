@@ -11,6 +11,6 @@ old-blah
 ## 0.1.0 - 2018-01-01
 initial-blah
 
-[0.1.1]: https://github.com/your-name/lein-changelog/compare/0.1.0...0.1.1
-[0.2.0]: https://github.com/your-name/lein-changelog/compare/0.1.1...0.2.0
-[Unreleased]: https://github.com/your-name/lein-changelog/compare/0.2.0...HEAD
+[0.1.1]: https://github.com/your-name/your-repo/compare/0.1.0...0.1.1
+[0.2.0]: https://github.com/your-name/your-repo/compare/0.1.1...0.2.0
+[Unreleased]: https://github.com/your-name/your-repo/compare/0.2.0...HEAD
