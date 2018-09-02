@@ -12,14 +12,19 @@ Add this into the `:plugins` vector of your _project.clj_:
 
     [lein-changelog "0.2.2"]
 
-Add this:
+If you don't have _CHANGELOG.md_ in your project, you can add a new one:
+
+    lein changelog init
+
+Then add this:
 
 ```
   :release-tasks [... 
                   ["changelog" "release"]
                   ...]
 ```
-To your _project.clj_. Read more about [custom release tasks].  
+
+to your _project.clj_. Read more about [custom release tasks].  
 **IMPORTANT**: the `["changelog" "release"]` has to come after version bumping, because this plugin reads the version from _project.clj_.
 
 For example (read more about this specific procedure [here](https://github.com/dryewo/clojure-library-template)):

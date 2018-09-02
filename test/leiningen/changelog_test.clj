@@ -14,17 +14,25 @@
     "[Unreleased]: foo blah blah /compare/mary had a little lamb...HEAD" [::ch/unreleased-link "mary had a little lamb"]))
 
 
+(deftest about-extract-owner+repo
+  (are [?in ?out]
+    (= ?out (extract-owner+repo ?in))
+    "git@github.com/foo/bar" "foo/bar"
+    "git@github.com/foo/bar.git" "foo/bar"
+    "git@github.com/foobar.git" nil))
+
+
 (deftest works
   (testing "Happy case"
     (= (slurp "test/test-changelog.after.md")
-       (release "0.2.0" "1234-56-78" (slurp "test/test-changelog.before.md"))))
+       (release-impl "0.2.0" "1234-56-78" (slurp "test/test-changelog.before.md"))))
 
   (testing "Errors"
     (are [?in ?error]
       (re-seq ?error
               (binding [leiningen.core.main/*exit-process?* false]
                 (try
-                  (release "0.2.0" "1234-56-78" ?in)
+                  (release-impl "0.2.0" "1234-56-78" ?in)
                   ::not-thrown
                   (catch ExceptionInfo e
                     (str e)))))
