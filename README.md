@@ -11,7 +11,7 @@ Intended to be used as part of [automated release procedure].
 First, modify `:plugins` vector of your _project.clj_:
 
 ```clj
-    :plugins [[lein-changelog "0.3.1"]]
+    :plugins [[lein-changelog "0.3.2"]]
 ```
 
 Then add `["changelog" "release"]` to `:release-tasks` in your _project.clj_:
