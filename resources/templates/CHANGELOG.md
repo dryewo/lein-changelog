@@ -17,7 +17,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Something has been removed.
 
 ## {{last-version}} — {{last-version-date}}
-Released without _CHANGELOG.md_
+Released without _CHANGELOG.md_.
 
 
 [Unreleased]: https://github.com/{{owner+repo}}/compare/{{last-version}}...HEAD
