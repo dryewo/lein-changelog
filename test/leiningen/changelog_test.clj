@@ -24,8 +24,8 @@
 
 (deftest works
   (testing "Happy case"
-    (= (slurp "test/test-changelog.after.md")
-       (release-impl "0.2.0" "1234-56-78" (slurp "test/test-changelog.before.md"))))
+    (is (= (slurp "test/test-changelog.after.md")
+           (release-impl "0.2.0" "2018-18-18" (slurp "test/test-changelog.before.md")))))
 
   (testing "Errors"
     (are [?in ?error]

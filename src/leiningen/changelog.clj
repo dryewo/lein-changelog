@@ -164,5 +164,5 @@
 (comment
   (release-impl "0.2.0"
                 "2018-18-18"
-                "blah-blah\n\n## [Unreleased]\nnew-blah\n\n## [0.1.1] - 2018-06-01\nold-blah\n\n## 0.1.0 - 2018-01-01\ninitial-blah\n\n[Unreleased]: https://github.com/your-name/lein-changelog/compare/0.1.1...HEAD\n[0.1.1]: https://github.com/your-name/lein-changelog/compare/0.1.0...0.1.1\n"
+                (slurp "test/test-changelog.before.md")
                 ))
