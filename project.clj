@@ -6,7 +6,7 @@
   :dependencies []
   :plugins [[lein-cloverage "1.0.13"]
             [lein-shell "0.5.0"]
-            [lein-changelog "0.3.0"]
+            [lein-changelog "0.3.2"]
             [lein-ancient "0.6.15"]]
   :eval-in-leiningen true
   :profiles {:dev {:dependencies [[org.clojure/clojure "1.9.0"]]}}
