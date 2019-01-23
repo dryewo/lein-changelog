@@ -9,7 +9,7 @@
             [lein-changelog "0.3.2"]
             [lein-ancient "0.6.15"]]
   :eval-in-leiningen true
-  :profiles {:dev {:dependencies [[org.clojure/clojure "1.9.0"]]}}
+  :profiles {:dev {:dependencies [[org.clojure/clojure "1.10.0"]]}}
   :deploy-repositories [["releases" :clojars]]
   :aliases {"update-readme-version" ["shell" "sed" "-i" "s/\\\\[lein-changelog \"[0-9.]*\"\\\\]/[lein-changelog \"${:version}\"]/" "README.md"]}
   :release-tasks [["vcs" "assert-committed"]
